@@ -1,0 +1,153 @@
+import React from 'react';
+import HeroSection from "@/components/hero.js";
+import features from "@/data/features.js";
+import howItWorks from '@/data/howItWorks';
+import faqs from '@/data/faqs';
+import testimonial from '@/data/testimonial';
+import Image from 'next/image';
+import { Button } from "@/components/ui/button"
+import Link from 'next/link';
+import { ChevronDownIcon } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+export default function Home() {
+  return (
+
+    <>
+      <div className="grid-background">
+      </div>
+      <HeroSection />
+      <section className='w-full py-12 md:py-24 lg:py-32 bg-background'>
+        <div className='container mx-auto px-4 md:px-8 lg:px-16 space-y-10'>
+          <h2 className='text-3xl font-bold tracking-tighter text-center mb-20'>Powerful Features for your Career Growth</h2>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  mx-auto max-w-6xl gap-5'>{features.map((feature, index) => {
+            return (
+              <Card className="border-2 hover:border-primary transition-colors duration-300" key={index}>
+
+                <CardContent className="font-bold text-center">
+                  <div className='flex items-center justify-center flex-col'>{feature.icon}
+                    <h3>
+                      {feature.title}
+                    </h3>
+                    <br />
+
+                    <br />
+                    <p className='text-muted-foreground'>{feature.description}</p>
+                  </div>
+                </CardContent>
+
+              </Card>
+            )
+          })}</div>
+        </div>
+      </section>
+
+      <section className='w-full py-12 md:py-24 lg:py-32 bg-background mt-15'>
+        <div className='container mx-auto px-4 md:px-8 lg:px-16 space-y-10'>
+          <h2 className='text-3xl font-bold tracking-tighter text-center mb-20'>How Does It Works</h2>
+          <Carousel>
+            <CarouselContent className="-ml-4">
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  mx-auto max-w-6xl gap-5'>
+                {howItWorks.map((item, index) => (
+                  <CarouselItem className="pl-4" key={index}>
+                    <Card className="border-2 hover:border-primary transition-colors duration-300">
+                      <CardContent className="font-bold text-center">
+                        <div className='flex items-center justify-center flex-col'>
+                          {item.icon}
+                          <h3>{item.title}</h3>
+                          <br />
+                          <p className='text-muted-foreground'>{item.description}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </div>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+
+        </div>
+      </section>
+
+      <section className='w-full py-12 md:py-24 lg:py-32 bg-background mt-15'>
+        <div className='container mx-auto px-4 md:px-8 lg:px-16 '>
+          <h2 className='text-3xl font-bold tracking-tighter text-center mb-20'>Some Testimonials</h2>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center mx-auto max-w-6xl'>
+
+            {testimonial.map((item, index) => (
+              <Card className="border-2 hover:border-primary transition-colors duration-300" key={index}>
+                <CardContent className="font-bold text-center">
+                  <div className='flex items-center justify-center flex-col'>
+                    <Image src={item.image} width={40} height={40} className='rounded-full'></Image>
+                    <h3>{item.author}</h3>
+                    <br />
+                    <p className='italic text-sm'>{item.role} at {item.company}</p>
+                    <blockquote className="italic text-muted-foreground mt-4 text-base leading-relaxed">
+                      “{item.quote}”
+                    </blockquote>
+
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      <section className='w-full py-12 md:py-24 lg:py-32 bg-background mt-15'>
+        <div className='container mx-auto px-4 md:px-8 lg:px-16 space-y-10'>
+          <h2 className='text-3xl font-bold tracking-tighter text-center mb-20'>Frequently Asked Questions</h2>
+          <div className='grid grid-rows-2 gap-6 max-w-6xl mx-auto md:grid-rows-3 lg:grid-rows-6'>{faqs.map((faq, index) => {
+            return (
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1" key={index} className="border-3 border-gray-200 rounded-md p-4">
+                  <AccordionTrigger className="font-bold text-lg md:text-xl lg:text-2xl">{faq.question}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground font-bold text-lg md:text-xl lg:text-2xl">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            )
+          })}
+          </div>
+        </div>
+      </section>
+
+      <section className='w-full py-12 md:py-24 lg:py-32 bg-background mt-15 gradient-background mb-10'>
+        <div className='container mx-auto px-4 md:px-8 lg:px-16 space-y-10'>
+          <h2 className='text-6xl font-bold tracking-tighter text-center mb-20'>Ready To Fly ?</h2>
+          <p className='font-bold text-center text-3xl mx-auto max-w-6xl'>Join Thousands of proffessionals who are advancing their careers by using the help of Career Campus </p>
+        </div>
+        <div className='flex justify-center'>
+          <Link href="/dashboard"><Button className="mt-10 text-3xl animate-bounce">Get Started !!!</Button></Link>
+        </div>
+
+
+      </section>
+    </>
+
+  );
+}

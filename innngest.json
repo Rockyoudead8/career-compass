@@ -1,0 +1,4 @@
+{
+  "functions": "./lib/inngest",
+  "serve": "./app/api/inngest/route.js"
+}
