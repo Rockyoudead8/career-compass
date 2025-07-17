@@ -40,25 +40,73 @@ export default function Home() {
       <section className='w-full py-12 md:py-24 lg:py-32 bg-background'>
         <div className='container mx-auto px-4 md:px-8 lg:px-16 space-y-10'>
           <h2 className='text-3xl font-bold tracking-tighter text-center mb-20'>Powerful Features for your Career Growth</h2>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  mx-auto max-w-6xl gap-5'>{features.map((feature, index) => {
-            return (
-              <Card className="border-2 hover:border-primary transition-colors duration-300" key={index}>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  mx-auto max-w-6xl gap-5'>
 
-                <CardContent className="font-bold text-center">
-                  <div className='flex items-center justify-center flex-col'>{feature.icon}
-                    <h3>
-                      {feature.title}
-                    </h3>
-                    <br />
+            <Card className="border-2 hover:border-primary transition-colors duration-300" key={0}>
 
-                    <br />
-                    <p className='text-muted-foreground'>{feature.description}</p>
-                  </div>
-                </CardContent>
+              <CardContent className="font-bold text-center">
+                <Link href="/onboarding"><div className='flex items-center justify-center flex-col'>{features[0].icon}
+                  <h3>
+                    {features[0].title}
+                  </h3>
+                  <br />
 
-              </Card>
-            )
-          })}</div>
+                  <br />
+                  <p className='text-muted-foreground'>{features[0].description}</p>
+                </div></Link>
+              </CardContent>
+
+            </Card>
+
+            <Card className="border-2 hover:border-primary transition-colors duration-300" key={1}>
+
+              <CardContent className="font-bold text-center">
+                <Link href="/interview"><div className='flex items-center justify-center flex-col'>{features[1].icon}
+                  <h3>
+                    {features[1].title}
+                  </h3>
+                  <br />
+
+                  <br />
+                  <p className='text-muted-foreground'>{features[1].description}</p>
+                </div></Link>
+              </CardContent>
+
+            </Card>
+
+            <Card className="border-2 hover:border-primary transition-colors duration-300" key={2}>
+
+              <CardContent className="font-bold text-center">
+                <Link href="/dashboard"><div className='flex items-center justify-center flex-col'>{features[2].icon}
+                  <h3>
+                    {features[2].title}
+                  </h3>
+                  <br />
+
+                  <br />
+                  <p className='text-muted-foreground'>{features[2].description}</p>
+                </div></Link>
+              </CardContent>
+
+            </Card>
+
+            <Card className="border-2 hover:border-primary transition-colors duration-300" key={3}>
+
+              <CardContent className="font-bold text-center">
+                <Link href="/resume"><div className='flex items-center justify-center flex-col'>{features[3].icon}
+                  <h3>
+                    {features[3].title}
+                  </h3>
+                  <br />
+
+                  <br />
+                  <p className='text-muted-foreground'>{features[3].description}</p>
+                </div></Link>
+              </CardContent>
+
+            </Card>
+
+          </div>
         </div>
       </section>
 
@@ -67,9 +115,10 @@ export default function Home() {
           <h2 className='text-3xl font-bold tracking-tighter text-center mb-20'>How Does It Works</h2>
           <Carousel>
             <CarouselContent className="-ml-4">
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  mx-auto max-w-6xl gap-5'>
-                {howItWorks.map((item, index) => (
-                  <CarouselItem className="pl-4" key={index}>
+
+              {howItWorks.map((item, index) => (
+                <CarouselItem className="pl-4" key={index}>
+                  <div className='p-1'>
                     <Card className="border-2 hover:border-primary transition-colors duration-300">
                       <CardContent className="font-bold text-center">
                         <div className='flex items-center justify-center flex-col'>
@@ -80,9 +129,10 @@ export default function Home() {
                         </div>
                       </CardContent>
                     </Card>
-                  </CarouselItem>
-                ))}
-              </div>
+                  </div>
+                </CarouselItem>
+              ))}
+
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />

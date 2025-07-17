@@ -51,16 +51,22 @@ export async function updateUser(data) {
 
 export async function fetchOnboardingStatus() {
   const { userId } = await auth();
-  if (!userId) throw new Error("User not authenticated");
+  if (!userId) {
+    return { isAuthenticated: false, isOnboarded: false };
+  }
 
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
     select: { industry: true },
   });
 
-  if (!user) throw new Error("User not found");
+  if (!user) {
+    return { isAuthenticated: true, isOnboarded: false };
+  }
 
   return {
+    isAuthenticated: true,
     isOnboarded: !!user.industry,
   };
 }
+

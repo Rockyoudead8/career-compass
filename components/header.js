@@ -48,7 +48,7 @@ const header = async () => {
                       <span className='text-sm font-medium'> Build Resume</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem> <Link href={"/CoverLetter"}>
+                  <DropdownMenuItem> <Link href={"/ai-cover-letter"}>
                     <PenBox className='h-4 w-4' />
                     <span className='text-sm font-medium'> Cover Letter</span>
                   </Link></DropdownMenuItem>
